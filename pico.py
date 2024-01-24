@@ -12,12 +12,13 @@ def is_sound_detected(threshold=55000):
     value = adc.read_u16()
     return value > threshold
 
+# While true means that the microphone is listening and sound is detected as the search for sound loops again and again
 while True:
     if is_sound_detected():
         signal_pin.value(1)  # Send signal (set pin HIGH)
         time.sleep(0.1)
 
-         # Keep the signal for a duration
+         # else means if not this, then this insteaad
     else:
         signal_pin.value(0)
         # No sound detected (set pin LOW)
